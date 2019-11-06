@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use Auth;
-use Illuminate\Pagination\Paginator;
 
 class ProductController extends Controller
 {
@@ -60,7 +59,7 @@ class ProductController extends Controller
     		];
     	}
 
-    	return view('web.product.product_saller',compact('products','products_sellers','second_category','paginator'));
+    	return view('web.product.product_saller',compact('products','products_sellers','second_category'));
     }
 
     public function productView($seller_id,$second_category)
