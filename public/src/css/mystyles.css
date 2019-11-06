@@ -53,4 +53,10 @@
     .address-order tr{
         font-size: 13px;
     }
+    .table-responsive {
+        padding: 0;
+    }
+    .table-responsive .gap-small{
+        margin: 0;
+    }
 }   
