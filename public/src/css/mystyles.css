@@ -29,3 +29,28 @@
 .ml-20{
     margin-left: 20px;
 }
+.categories .banner-category {
+    height: 182px;
+}
+#address_div .col-md-6{
+    padding: 0 5px;
+}
+#address_div .box{
+    margin-bottom: 10px;
+    display: flex;
+}
+#address_div input[type="radio"]{
+    margin-right: 7px; 
+}
+/*================
+     Mobile   
+=================*/
+@media (max-width: 425px){
+    .slider-item, .slider-item-sm {
+        height: 133px;
+        width:100%;
+    }    
+    .address-order tr{
+        font-size: 13px;
+    }
+}   

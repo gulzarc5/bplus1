@@ -49,7 +49,12 @@ h6,
   margin-bottom: 10px;
 }
 .widget-title-lg {
-  font-size: 35px;
+  font-size: 28px;
+  text-transform: uppercase;
+  border: 2px dashed #365271;
+  display: inline-block;
+  padding: 2px 14px;
+  background: #fff;
 }
 label {
   font-weight: 400;
@@ -1174,8 +1179,12 @@ hr {
   z-index: 10;
 }
 @media (max-width:992px) {
-  .slider-item-caption-left,
-  .slider-item-caption-right,
+  .slider-item-caption-left{
+    left: 0 !important;    
+  }
+  .slider-item-caption-right{ 
+    right: 0 !important;
+  }
   .slider-item-caption-top {
     width: 100%;
     left: 0 !important;
@@ -1187,6 +1196,11 @@ hr {
     transform: none;
     padding: 30px;
     text-align: center !important;
+  }
+  .slider-item-caption-left .btn-lg,
+  .slider-item-caption-right .btn-lg,
+  .slider-item-caption-top .btn-lg{    
+    padding: 4px 8px;
   }
 }
 .slider-item-img-left,
@@ -1237,7 +1251,7 @@ hr {
 }
 @media (max-width:992px) {
   .slider-item-caption-title {
-    font-size: 25px !important;
+    font-size: 18px !important;
     margin-bottom: 10px;
   }
 }
@@ -1250,7 +1264,7 @@ hr {
 }
 @media (max-width:992px) {
   .slider-item-caption-desc {
-    font-size: 15px !important;
+    font-size: 12px !important;
     margin-bottom: 10px;
   }
 }
@@ -3071,6 +3085,7 @@ header.main {
   font-size: 11px;
 }
 .product-caption-price {
+  margin-top: 10px;
   margin-bottom: 0;
   font-size: 12px;
 }
@@ -3122,13 +3137,13 @@ header.main {
 }
 .product-sm-left .product-img-wrap {
   float: left;
-  width: 34%;
+  width: 40%;
   padding: 7px;
   margin: 0;
 }
 .product-sm-left .product-caption {
   float: left;
-  width: 66%;
+  width: 60%;
   padding: 0 15px;
 }
 .product-sm-left .product-caption-feature-list {
@@ -3142,18 +3157,15 @@ header.main {
   font-size: 14px;
 }
 .product-sm-left .product-caption-price {
-  margin-top: 2px;
+  margin-top: 6px;
 }
 .product-sm-left .product-caption-title {
   font-size: 13px;
   height: 35px;
 }
 .product-sm-left .product-caption-price > span {
-  font-size: 12px;
+  font-size: 15px;
 }
-.product-sm-left .product-caption-old-price > span {
-  font-size: 12px;
-} 
 .product-sm {
   padding: 10px;
 }
@@ -3320,11 +3332,10 @@ header.main {
   width: 25%;
 }
 .product-page-price {
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 40px;
+  font-weight: 700;
   line-height: 1em;
   margin-bottom: 1px;
-  margin-top: 10px;
 }
 .product-page-price-list {
   font-size: 25px;

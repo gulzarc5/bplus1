@@ -1,18 +1,11 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-    <title>BPlus
-    </title>
+  <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
-    <meta name="keywords" content="Template, html, premium, themeforest" />
-    <meta name="description" content="TheBox - premium e-commerce template">
-    <meta name="author" content="Tsoy">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='http://fonts.googleapis.com/css?family=Roboto:500,300,700,400italic,400' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" href="{{asset('src/img/logo-ww.png')}}" type="image/x-icon">
-    <!-- <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'> -->
-    <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'> -->
+    <link rel="shortcut icon" href="{{asset('src/img/logo-wwfav.png')}}" type="image/x-icon">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{asset('src/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('src/css/font-awesome.css')}}">
@@ -33,16 +26,11 @@
     <link rel="alternate stylesheet" type="text/css" href="{{asset('src/css/schemes/studio.css')}}" title="studio" media="all" />
     <link rel="alternate stylesheet" type="text/css" href="{{asset('src/css/schemes/leather.css')}}" title="leather" media="all" />
     <link rel="alternate stylesheet" type="text/css" href="{{asset('src/css/schemes/denim.css')}}" title="denim" media="all" />
-    <link rel="alternate stylesheet" type="text/css" href="{{asset('src/css/schemes/scarlet.css')}}" title="scarlet" media="all" />
-    
+    <link rel="alternate stylesheet" type="text/css" href="{{asset('src/css/schemes/scarlet.css')}}" title="scarlet" media="all" /> 
+    <style>.list{margin-top: 20px;}</style>  
   </head>
   <body>
     <div class="global-wrapper clearfix" id="global-wrapper">
-      <style type="text/css">
-        .list{
-          margin-top: 20px;
-        }
-      </style>
       <div class="navbar-before mobile-hidden">
         <div class="container">
           <div class="row">
@@ -77,8 +65,8 @@
           </div>
         </div>
       </div>
-
-       <nav class="navbar navbar-inverse navbar-main yamm">
+      <!-- Navbar -->
+      <nav class="navbar navbar-inverse navbar-main yamm">
         <div class="container">
           <div class="navbar-header" >
             <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-nav-collapse" area_expanded="false">
@@ -170,9 +158,11 @@
                       </li>
 
                     @endforeach
-                  @endif
-               
+                  @endif               
                 </ul>
+                {{--======================== 
+                        Mobile Menu
+                 ========================--}}
               </li>
             </ul>
             <form class="navbar-form navbar-left navbar-main-search" role="search">
@@ -183,20 +173,6 @@
               </a>
             </form>
             <ul class="nav navbar-nav navbar-right">
-              {{-- <li>
-                <a href="{{url('chat_history')}}" data-effect="mfp-move-from-top" class="">
-                  <i class="fa fa-comments-o" aria-hidden="true" style="font-size: 20px;">
-                  </i> Chat
-                </a>
-              </li> --}}
-              <!-- <li>
-<a href="#nav-login-dialog" data-effect="mfp-move-from-top" class="popup-text">Sign In
-</a>
-</li> -->
-              <!--  <li>
-<a href="#nav-account-dialog" data-effect="mfp-move-from-top" class="popup-text">Create Account
-</a>
-</li> -->
               <li class="dropdown">
                 <a href="{{route('web.viewCart')}}">
                   <i class="fa fa-shopping-cart" style="font-size: 20px;"></i> 

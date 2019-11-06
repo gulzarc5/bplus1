@@ -16,7 +16,7 @@
             	<div class="col-md-12">
                 {{ Form::open(['method' => 'post','route'=>'web.final_checkout']) }}
 
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         @if(isset($user_data['shipping_adress']) && !empty($user_data['shipping_adress']) && (count($user_data['shipping_adress']) > 0) )
                 		<div class="col-md-12" id="address_div">
                             <h3 class="widget-title">Shipping Details</h3>
@@ -25,25 +25,28 @@
                                 @php
                                     $flag = true;
                                 @endphp
-                                <div class="box">
-                                    @if ($flag)
-                                        <input type="radio" name="address_id" value="{{ $address->id }}" checked> 
-                                        @php
-                                            $flag = false;
-                                        @endphp                                       
-                                    @else
-                                        <input type="radio" name="address_id" value="{{ $address->id }}"> 
-                                    @endif
-                                    
-                                	<p><b>State:</b> {{ $address->s_name}}</p>
-                                    <p><b>City:</b> {{ $address->c_name}}</p>
-                                    <p><b>Pin Code:</b> {{ $address->pin}}
-                                    <p><b>Address:</b> {{ $address->address}} </p>
+                                <div class="col-md-6">
+                                    <div class="box">
+                                        @if ($flag)
+                                            <input type="radio" name="address_id" value="{{ $address->id }}" checked> 
+                                            @php
+                                                $flag = false;
+                                            @endphp                                       
+                                        @else
+                                            <input type="radio" name="address_id" value="{{ $address->id }}"> 
+                                        @endif
+                                        <div>
+                                            <p><b>State:</b> {{ $address->s_name}}</p>
+                                            <p><b>City:</b> {{ $address->c_name}}</p>
+                                            <p><b>Pin Code:</b> {{ $address->pin}}</p>
+                                            <p><b>Address:</b> {{ $address->address}} </p>                                            
+                                        </div>
+                                    </div>
                                 </div>
                             @endforeach
-                            <div style="margin-top: 10px;">
-                                <button class="btn btn-info" type="button" id="add_new_address_button">New Address</button>
-        					</div>
+                                <div class="col-md-6" style="margin-top: 40px;display: flex;justify-content: center;">
+                                    <button class="btn btn-info" type="button" id="add_new_address_button">New Address</button>
+            					</div>
                         </div>
                         @else
                             <div class="col-md-12" >                                
@@ -103,10 +106,10 @@
                          @endif
                     </div>
                     
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <h3 class="widget-title">Order Info</h3>
                         <div class="box">
-                            <table class="table">
+                            <table class="table address-order">
                                 <thead>
                                     <tr>
                                         <th>Product</th>
@@ -138,12 +141,12 @@
                                         <td>Subtotal</td>
                                         <td>₹{{ number_format($total,2) }}</td>
                                     </tr>
-                                    <tr>
+                                   {{--  <tr>
                                         <td></td>
                                         <td></td>
                                         <td>Shipping</td>
                                         <td>₹0</td>
-                                    </tr>
+                                    </tr> --}}
                                     <tr>
                                         <td></td>
                                         <td></td>
@@ -154,9 +157,19 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div style="margin-top: 10px; margin-left: 80%;">
+                        <h3 class="widget-title" style="margin-top: 10px">Payment Method</h3>
+                        <div class="box" style="min-height: 40px">
+                            <div class="col-md-6 col-xs-6">
+                                <input type="radio" name="payment">
+                                <label>COD</label>
+                            </div>
+                            <div class="col-md-6 col-xs-6">
+                                <input type="radio" name="payment">
+                                <label>Online</label>
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px; margin-left: 40%;">
                             <button type="submit" class="btn btn-primary">Place Order</button>
-    					{{-- <a href="" style="background-color: green;border: 1px green solid;padding: 5px 10px 5px 10px;border-radius: 4px; color: #fff">Place Order</a> --}}
     					</div>
                     </div>
                 {{ Form::close() }}  
