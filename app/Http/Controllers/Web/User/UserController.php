@@ -163,6 +163,7 @@ class UserController extends Controller
             ->join('city','shipping_address.city_id','=','city.id')
             ->where('shipping_address.user_id',$user_id)
             ->whereNull('shipping_address.deleted_at')
+            ->where('shipping_address.id','desc')
             ->get();
 
         $state = DB::table('state')->whereNull('deleted_at')->get();
