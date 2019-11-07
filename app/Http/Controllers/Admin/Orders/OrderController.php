@@ -26,13 +26,9 @@ class OrderController extends Controller
                    $btn = '<a href="'.route('admin.product_view', ['product_id' =>encrypt($row->product_id)]).'" class="btn btn-info btn-sm" target="_blank">View Product</a>
                    <a href="'.route('admin.single_order_view', ['order_id' =>encrypt($row->id)]).'" class="btn btn-primary btn-sm" target="_blank">View Order</a>';
                    if ($row->status == '1') {
-                       $btn .= '<a href="'.route('admin.order_update',['order_details_id' =>encrypt($row->id),'status' =>encrypt(2)]).'" class="btn btn-warning btn-sm">Shipped</a>
+                       $btn .= '<a href="'.route('admin.order_update',['order_details_id' =>encrypt($row->id),'status' =>encrypt(2)]).'" class="btn btn-success btn-sm">Processed</a>
                        <a href="'.route('admin.order_update', ['order_details_id' =>encrypt($row->id),'status' =>encrypt(4)]).'" class="btn btn-danger btn-sm">Cancel</a>';
                         return $btn;
-                    }elseif($row->status == '2'){
-                        $btn .= '<a href="'.route('admin.order_update',['order_details_id' =>encrypt($row->id),'status' =>encrypt(3)]).'" class="btn btn-primary btn-sm">Delivered</a>
-                        <a href="'.route('admin.order_update', ['order_details_id' =>encrypt($row->id),'status' =>encrypt(4)]).'" class="btn btn-danger btn-sm">Cancel</a>';
-                         return $btn;
                     }else{
                         $btn .= '<a  class="btn btn-success btn-sm">Order Processed</a>';
                          return $btn;
@@ -44,12 +40,9 @@ class OrderController extends Controller
                    $btn = '<a href="#" class="btn btn-warning btn-sm">Pending</a>';
                     return $btn;
                 }elseif($row->status == '2'){
-                   $btn = '<a href="#" class="btn btn-info btn-sm">Dispatched</a>';
+                   $btn = '<a href="#" class="btn btn-info btn-sm">Processed</a>';
                     return $btn;
-                }elseif($row->status == '3'){
-                    $btn = '<a href="#" class="btn btn-primary btn-sm">Delivered</a>';
-                     return $btn;
-                 }else{
+                }else{
                     $btn = '<a href="#" class="btn btn-danger btn-sm">Cancelled</a>';
                      return $btn;
                  }
@@ -137,7 +130,7 @@ class OrderController extends Controller
         $color = null;
         if (!empty($order_details->color_id)) {
             $product_color = DB::table('product_colors')->where('id',$order_details->color_id)->first();
-            $color = DB::table('color')->where('id',$product_color->color_id)->first();
+            $color = DB::table('colors')->where('id',$product_color->color_id)->first();
         }
         $data = [
             'buyer_info' => $buyer_info,
@@ -168,13 +161,9 @@ class OrderController extends Controller
                    $btn = '<a href="'.route('admin.product_view', ['product_id' =>encrypt($row->product_id)]).'" class="btn btn-info btn-sm" target="_blank">View Product</a>
                    <a href="'.route('admin.single_order_view', ['order_id' =>encrypt($row->id)]).'" class="btn btn-primary btn-sm" target="_blank">View Order</a>';
                    if ($row->status == '1') {
-                       $btn .= '<a href="'.route('admin.order_update',['order_details_id' =>encrypt($row->id),'status' =>encrypt(2)]).'" class="btn btn-warning btn-sm">Shipped</a>
+                       $btn .= '<a href="'.route('admin.order_update',['order_details_id' =>encrypt($row->id),'status' =>encrypt(2)]).'" class="btn btn-info btn-sm">Processed</a>
                        <a href="'.route('admin.order_update', ['order_details_id' =>encrypt($row->id),'status' =>encrypt(4)]).'" class="btn btn-danger btn-sm">Cancel</a>';
                         return $btn;
-                    }elseif($row->status == '2'){
-                        $btn .= '<a href="'.route('admin.order_update',['order_details_id' =>encrypt($row->id),'status' =>encrypt(3)]).'" class="btn btn-primary btn-sm">Delivered</a>
-                        <a href="'.route('admin.order_update', ['order_details_id' =>encrypt($row->id),'status' =>encrypt(4)]).'" class="btn btn-danger btn-sm">Cancel</a>';
-                         return $btn;
                     }else{
                         $btn .= '<a  class="btn btn-success btn-sm">Order Processed</a>';
                          return $btn;
@@ -186,12 +175,9 @@ class OrderController extends Controller
                    $btn = '<a href="#" class="btn btn-warning btn-sm">Pending</a>';
                     return $btn;
                 }elseif($row->status == '2'){
-                   $btn = '<a href="#" class="btn btn-info btn-sm">Dispatched</a>';
+                   $btn = '<a href="#" class="btn btn-info btn-sm">Processed</a>';
                     return $btn;
-                }elseif($row->status == '3'){
-                    $btn = '<a href="#" class="btn btn-primary btn-sm">Delivered</a>';
-                     return $btn;
-                 }else{
+                }else{
                     $btn = '<a href="#" class="btn btn-danger btn-sm">Cancelled</a>';
                      return $btn;
                  }
@@ -239,7 +225,7 @@ class OrderController extends Controller
         $query = DB::table('order_details')
         ->select('order_details.*','products.name as p_name','products.seller_id as seller_id')
         ->join('products','products.id','=','order_details.product_id')
-        ->where('order_details.status',3)
+        ->where('order_details.status',2)
         ->orderBy('order_details.id','desc');
             return datatables()->of($query->get())
             ->addIndexColumn()
@@ -247,13 +233,9 @@ class OrderController extends Controller
                    $btn = '<a href="'.route('admin.product_view', ['product_id' =>encrypt($row->product_id)]).'" class="btn btn-info btn-sm" target="_blank">View Product</a>
                    <a href="'.route('admin.single_order_view', ['order_id' =>encrypt($row->id)]).'" class="btn btn-primary btn-sm" target="_blank">View Order</a>';
                    if ($row->status == '1') {
-                       $btn .= '<a href="'.route('admin.order_update',['order_details_id' =>encrypt($row->id),'status' =>encrypt(2)]).'" class="btn btn-warning btn-sm">Shipped</a>
+                       $btn .= '<a href="'.route('admin.order_update',['order_details_id' =>encrypt($row->id),'status' =>encrypt(2)]).'" class="btn btn-info btn-sm">Processed</a>
                        <a href="'.route('admin.order_update', ['order_details_id' =>encrypt($row->id),'status' =>encrypt(4)]).'" class="btn btn-danger btn-sm">Cancel</a>';
                         return $btn;
-                    }elseif($row->status == '2'){
-                        $btn .= '<a href="'.route('admin.order_update',['order_details_id' =>encrypt($row->id),'status' =>encrypt(3)]).'" class="btn btn-primary btn-sm">Delivered</a>
-                        <a href="'.route('admin.order_update', ['order_details_id' =>encrypt($row->id),'status' =>encrypt(4)]).'" class="btn btn-danger btn-sm">Cancel</a>';
-                         return $btn;
                     }else{
                         $btn .= '<a  class="btn btn-success btn-sm">Order Processed</a>';
                          return $btn;
@@ -265,12 +247,9 @@ class OrderController extends Controller
                    $btn = '<a href="#" class="btn btn-warning btn-sm">Pending</a>';
                     return $btn;
                 }elseif($row->status == '2'){
-                   $btn = '<a href="#" class="btn btn-info btn-sm">Dispatched</a>';
+                   $btn = '<a href="#" class="btn btn-info btn-sm">Processed</a>';
                     return $btn;
-                }elseif($row->status == '3'){
-                    $btn = '<a href="#" class="btn btn-primary btn-sm">Delivered</a>';
-                     return $btn;
-                 }else{
+                }else{
                     $btn = '<a href="#" class="btn btn-danger btn-sm">Cancelled</a>';
                      return $btn;
                  }

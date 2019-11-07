@@ -226,9 +226,7 @@
                             @if($order->status == '1')
                               <button class='btn btn-warning'>Pending</button>
                             @elseif($order->status == '2')
-                              <button class='btn btn-info'>Shipped</button>
-                            @elseif($order->status == '3')
-                              <button class='btn btn-success'>Delivered</button>
+                              <button class='btn btn-info'>Processed</button>
                             @else
                               <button class='btn btn-danger'>Cancelled</button>
                             @endif

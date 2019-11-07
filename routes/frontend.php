@@ -48,6 +48,9 @@ Route::group(['namespace'=> 'Web'], function(){
         Route::post('/Chnage/Password', 'UserController@changePassword')->name('web.user_change_password');
         Route::get('/checkout', 'UserController@checkout')->name('web.checkout');
         Route::post('/checkout', 'UserController@finalCheckout')->name('web.final_checkout');
+        Route::get('/pay/order/amount/{order_id}','UserController@paySuccess')->name('web.pay_order_amount');
+
+        Route::get('/order/status/{order_detail_id}', 'UserController@orderStatus')->name('web.order_status');
         Route::get('/order_history', 'UserController@orderList')->name('web.order_history');
         Route::get('/thankyou', function () {
             return view('web.thankyou');

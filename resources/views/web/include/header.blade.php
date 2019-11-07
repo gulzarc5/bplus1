@@ -216,48 +216,6 @@
                       </div>
                     </li>
                   @endif
-                  
-                 {{--  <li>
-                    <a class="dropdown-menu-shipping-cart-img" href="#">
-                      <img src="{{asset('src/img/cart/2.jpg')}}" alt="Image Alternative text" title="Image Title" />
-                    </a>
-                    <div class="dropdown-menu-shipping-cart-inner">
-                      <p class="dropdown-menu-shipping-cart-price">₹43
-                      </p>
-                      <p class="dropdown-menu-shipping-cart-item">
-                        <a href="#">Nikon D5200 24.1 MP Digital SLR Camera
-                        </a>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <a class="dropdown-menu-shipping-cart-img" href="#">
-                      <img src="{{asset('src/img/cart/3.jpg')}}" alt="Image Alternative text" title="Image Title" />
-                    </a>
-                    <div class="dropdown-menu-shipping-cart-inner">
-                      <p class="dropdown-menu-shipping-cart-price">₹41
-                      </p>
-                      <p class="dropdown-menu-shipping-cart-item">
-                        <a href="#">Apple 11.6" MacBook Air Notebook 
-                        </a>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <a class="dropdown-menu-shipping-cart-img" href="#">
-                      <img src="{{asset('src/img/cart/4.jpg')}}" alt="Image Alternative text" title="Image Title" />
-                    </a>
-                    <div class="dropdown-menu-shipping-cart-inner">
-                      <p class="dropdown-menu-shipping-cart-price">₹77
-                      </p>
-                      <p class="dropdown-menu-shipping-cart-item">
-                        <a href="#">Fossil Women's Original Boyfriend
-                        </a>
-                      </p>
-                    </div>
-                  </li> --}}
-
-
                   <li>
                     <p class="dropdown-menu-shipping-cart-total">Total: ₹{{ number_format($header_cart_total,2) }} 
                     </p>

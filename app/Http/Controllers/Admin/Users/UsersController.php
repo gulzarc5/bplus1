@@ -17,7 +17,8 @@ class UsersController extends Controller
     {
     	$query = DB::table('seller')        
         ->whereNull('deleted_at')
-        ->where('user_role',2);
+        ->where('user_role',2)
+        ->orderBy('id','desc');
        
             return datatables()->of($query->get())
             ->addIndexColumn()
@@ -72,17 +73,20 @@ class UsersController extends Controller
             return datatables()->of($query->get())
             ->addIndexColumn()
             ->addColumn('action', function($row){
-                   $btn = '
-                   <a href="#" class="btn btn-info btn-sm" target="_blank">View</a>
-                   <a href="#" class="btn btn-warning btn-sm">Verify</a>   
-                   <a href="#" class="btn btn-warning btn-sm">Active</a>';
-             
-                    return $btn;
+                if ($row->status == 1) {
+                    $btn = '<a href="'.route('admin.sellerUpdateStatus',['seller_id'=>encrypt($row->id),'status'=>encrypt(2)]).'" class="btn btn-danger btn-sm">Disable</a>';
+                } else {
+                    $btn = '<a href="'.route('admin.sellerUpdateStatus',['seller_id'=>encrypt($row->id),'status'=>encrypt(1)]).'" class="btn btn-success btn-sm">Enable</a>';
+                }
+                return $btn;
             })
             ->addColumn('status_tab', function($row){
-
-                   $btn = '<a href="#" class="btn btn-success btn-sm">Enabled</a>';
-                    return $btn;
+                if ($row->status == '1') {
+                   $btn = '<a class="btn btn-success btn-sm">Enabled</a>';
+                } else {
+                   $btn = '<a class="btn btn-danger btn-sm">Disabled</a>';
+                }
+                return $btn;
             })
             ->rawColumns(['action','status_tab'])
             ->toJson();

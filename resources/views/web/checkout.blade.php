@@ -160,11 +160,11 @@
                         <h3 class="widget-title" style="margin-top: 10px">Payment Method</h3>
                         <div class="box" style="min-height: 40px">
                             <div class="col-md-6 col-xs-6">
-                                <input type="radio" name="payment" value="1" checked>
+                                <input type="radio" name="payment_method" value="1" checked>
                                 <label>COD</label>
                             </div>
                             <div class="col-md-6 col-xs-6">
-                                <input type="radio" name="payment" value="2">
+                                <input type="radio" name="payment_method" value="2">
                                 <label>Online</label>
                             </div>
                         </div>

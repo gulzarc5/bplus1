@@ -87,7 +87,7 @@ class SellerController extends Controller
             ->count();
         $delivered_orders = DB::table('order_details')
             ->where('seller_id',$user_id)
-            ->where('status',3)
+            ->where('status',2)
 			->count();
         $data = [
             'last_10_product' => $last_10_product,
@@ -224,13 +224,9 @@ class SellerController extends Controller
             ->addColumn('action', function($row){
                    $btn = '<a href="'.route('seller.product_view', ['product_id' =>encrypt($row->product_id)]).'" class="btn btn-info btn-sm" target="_blank">View Product</a>';
                    if ($row->status == '1') {
-                       $btn .= '<a href="'.route('seller.orderUpdate',['order_details_id' =>encrypt($row->id),'status' =>encrypt(2)]).'" class="btn btn-warning btn-sm">Shipped</a>
+                       $btn .= '<a href="'.route('seller.orderUpdate',['order_details_id' =>encrypt($row->id),'status' =>encrypt(2)]).'" class="btn btn-success btn-sm">Processed</a>
                        <a href="'.route('seller.orderUpdate', ['order_details_id' =>encrypt($row->id),'status' =>encrypt(4)]).'" class="btn btn-danger btn-sm">Cancel</a>';
                         return $btn;
-                    }elseif($row->status == '2'){
-                        $btn .= '<a href="'.route('seller.orderUpdate',['order_details_id' =>encrypt($row->id),'status' =>encrypt(3)]).'" class="btn btn-primary btn-sm">Delivered</a>
-                        <a href="'.route('seller.orderUpdate', ['order_details_id' =>encrypt($row->id),'status' =>encrypt(4)]).'" class="btn btn-danger btn-sm">Cancel</a>';
-                         return $btn;
                     }else{
                         $btn .= '<a  class="btn btn-success btn-sm">Order Processed</a>';
                          return $btn;
@@ -242,12 +238,9 @@ class SellerController extends Controller
                    $btn = '<a href="#" class="btn btn-warning btn-sm">Pending</a>';
                     return $btn;
                 }elseif($row->status == '2'){
-                   $btn = '<a href="#" class="btn btn-info btn-sm">Dispatched</a>';
+                   $btn = '<a href="#" class="btn btn-info btn-sm">Processed</a>';
                     return $btn;
-                }elseif($row->status == '3'){
-                    $btn = '<a href="#" class="btn btn-primary btn-sm">Delivered</a>';
-                     return $btn;
-                 }else{
+                }else{
                     $btn = '<a href="#" class="btn btn-danger btn-sm">Cancelled</a>';
                      return $btn;
                  }

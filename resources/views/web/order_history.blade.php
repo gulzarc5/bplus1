@@ -16,6 +16,7 @@
                   <th>Quantity</th>
                   <th>Total</th>
                   <th>Status</th>
+                  <th>Action</th>
                </tr>
             </thead>
             <tbody>
@@ -33,14 +34,39 @@
                            <td>{{ $product->quantity }}</td>
                            <td>₹{{ number_format(($product->price*$product->quantity),2) }}</td>
                            <td>
-                              @if ($product->status == '1')
-                                  <button class="btn btn-warning">Waiting For Dispatch</button>
-                              @elseif( $product->status == '2' )
-                                 <button class="btn btn-info">Shipped</button>
-                              @elseif( $product->status == '3' )
-                                 <button class="btn btn-primary">Delivered</button>
+                              @if ($product->payment_method == '1')
+                                 @if ($product->status == '1')
+                                    <button class="btn btn-warning">Processing</button>
+                                 @elseif( $product->status == '2' )
+                                    <button class="btn btn-info">Processed</button>
+                                 @else
+                                    <button class="btn btn-danger">Cancelled</button>
+                                 @endif
                               @else
-                                 <button class="btn btn-danger">Cancelled</button>
+                                 @if ($product->payment_status == '2')
+                                    @if ($product->status == '1')
+                                       <button class="btn btn-warning">Processing</button>
+                                    @elseif( $product->status == '2' )
+                                       <button class="btn btn-info">Processed</button>
+                                    @else
+                                       <button class="btn btn-danger">Cancelled</button>
+                                    @endif
+                                 @else
+                                    <button class="btn btn-danger">Payment Failed</button>
+                                 @endif
+                              @endif
+                           </td>
+                           <td>
+                              @if ($product->payment_method == '1')
+                                 @if ($product->status == '1')
+                                    <a href="{{route('web.order_status',['order_detail_id'=>encrypt($product->id)])}}" class="btn btn-danger">Cancel Order</a>
+                                 @endif
+                              @else
+                                 @if ($product->payment_status == '2')
+                                    @if ($product->status == '1')
+                                       <a href="{{route('web.order_status',['order_detail_id'=>encrypt($product->id)])}}" class="btn btn-danger">Cancel Order</a>
+                                    @endif
+                                 @endif
                               @endif
                            </td>
                         </tr>

@@ -30,7 +30,7 @@ class AdminDeshboardController extends Controller
 			->distinct('order_id')
 			->count('order_id');
 		$total_delivered_orders = DB::table('order_details')
-			->where('status',3)
+			->where('status',2)
 			->distinct('order_id')
 			->count('order_id');
     	$last_10_product = DB::table('products')

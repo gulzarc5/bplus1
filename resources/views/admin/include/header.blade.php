@@ -11,10 +11,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="images/favicon.ico" type="image/ico" />
+  <link rel="icon" href="{{asset('admin/src_files/logo/icon.png')}}" type="image/ico" />
 
     <title>Bplus</title>
-    <link rel="icon" href="{{ asset('images/logo_icon.png')}}" type="image/icon type">
+    <link rel="icon" href="{{asset('admin/src_files/logo/icon.png')}}" type="image/icon type">
 
 
     <!-- Bootstrap -->
@@ -57,7 +57,7 @@
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
               <a href="{{route('admin.deshboard')}}" class="site_title">
-                <img src="{{ asset('images/logo.png')}}" height="70">
+                  <img src="{{asset('admin/src_files/logo/logo.png')}}" height="70">
               </a>
             </div>
 
@@ -100,7 +100,7 @@
                     <ul class="nav child_menu">
                       <li><a href="{{ route('admin.all_orders') }}">All Orders</a></li>
                       <li><a href="{{ route('admin.pending_orders') }}">Pending Orders</a></li>
-                      <li><a href="{{ route('admin.delivered_orders') }}">Delivered Orders</a></li>
+                      <li><a href="{{ route('admin.delivered_orders') }}">Processed Orders</a></li>
                     </ul>
                   </li>
 
@@ -185,7 +185,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="#">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -197,16 +197,16 @@
         <div class="top_nav">
           <div class="nav_menu">
             <nav>
-              <div class="nav toggle">
+              {{-- <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
+              </div> --}}
 
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" style="color:red !important;font-weight:bold;"> Log Out</a></li>
              <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                   @csrf
               </form>
-
+{{-- 
                 <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
@@ -270,7 +270,7 @@
                       </div>
                     </li>
                   </ul>
-                </li>
+                </li> --}}
               </ul>
             </nav>
           </div>

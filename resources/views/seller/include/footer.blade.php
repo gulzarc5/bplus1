@@ -1,8 +1,8 @@
        <!-- footer content -->
         <footer style="background-color: transparent;">
-          <div class="pull-right">
+          {{-- <div class="pull-right">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
+          </div> --}}
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->

@@ -74,7 +74,7 @@
         </div>
         <ul class="list-inline">
           <li>
-            <a href="#" class="popup-text">Already Memeber
+            <a href="{{route('web.buyerLogin')}}" >Already Memeber
             </a>
           </li>
         </ul>
