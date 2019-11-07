@@ -5,7 +5,7 @@
 @section('content')
 
   <!-- Start Slider -->
-  <div class="owl-carousel owl-loaded owl-nav-dots-inner" data-options='{"items":1,"loop":true,"autoplay":true,"autoplayTimeout":5000}'>
+  <div class="owl-carousel owl-loaded owl-nav-dots-inner mb-10" data-options='{"items":1,"loop":true,"autoplay":true,"autoplayTimeout":5000}'>
     <div class="owl-item">
       <div class="slider-item" style="background-image:url('src/img/slider/slider1.jpg');">
         <div class="container">
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="owl-item">
-      <div class="slider-item" style="background-image:url('src/img/slider/slider2.png');">
+      <div class="slider-item" style="background-image:url('src/img/slider/slider2.jpg');">
         <div class="container">
           <div class="slider-item-inner">
             <div class="slider-item-caption-right slider-item-caption-white">
@@ -40,7 +40,7 @@
       </div>
     </div>
     <div class="owl-item">
-      <div class="slider-item" style="background-image:url('src/img/slider/slider3.png');">
+      <div class="slider-item" style="background-image:url('src/img/slider/slider3.jpg');">
         <div class="container">
           <div class="slider-item-inner">
             <div class="slider-item-caption-left">
@@ -59,15 +59,12 @@
     </div>
   </div>
 
-  <!-- Start Gap -->
-  <div class="gap"></div>
-
   <!-- Start Categories -->
   <div class="container categories">
     <h3 class="widget-title-lg">Shop by Category
     </h3>
     <div class="row row-sm-gap" data-gutter="15">
-      <div class="col-md-2">
+      <div class="col-md-2 col-xs-4">
         <a class="banner-category" href="{{route('web.first_category',['main_category_id'=>encrypt(1)])}}">
           <img class="banner-category-img" src="{{asset('src/img/test_icon/exterior.png')}}" alt="Image Alternative text" title="Image Title" />
           <h5 class="banner-category-title">Home & Furniture
@@ -76,14 +73,14 @@
           </p> --}}
         </a>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 col-xs-4">
         <a class="banner-category" href="{{route('web.first_category',['main_category_id'=>encrypt(4)])}}">
           <img class="banner-category-img" src="{{asset('src/img/test_icon/tech.png')}}" alt="Image Alternative text" title="Image Title" />
           <h5 class="banner-category-title">Electronics & Appliances</h5>
           {{-- <p class="banner-category-desc">599 products</p> --}}
         </a>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 col-xs-4">
         <a class="banner-category" href="{{route('web.first_category',['main_category_id'=>encrypt(6)])}}">
           <img class="banner-category-img" src="{{asset('src/img/test_icon/clothes.png')}}" alt="Image Alternative text" title="Image Title" />
           <h5 class="banner-category-title">Women Clothes & Accessories
@@ -91,7 +88,7 @@
           {{-- <p class="banner-category-desc">534 products</p> --}}
         </a>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 col-xs-4">
         <a class="banner-category" href="{{route('web.first_category',['main_category_id'=>encrypt(9)])}}">
           <img class="banner-category-img" src="{{asset('src/img/test_icon/art.png')}}" alt="Image Alternative text" title="Image Title" />
           <h5 class="banner-category-title">Sports, Books & More
@@ -99,14 +96,14 @@
           {{-- <p class="banner-category-desc">453 products</p> --}}
         </a>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 col-xs-4">
         <a class="banner-category" href="{{route('web.first_category',['main_category_id'=>encrypt(7)])}}">
           <img class="banner-category-img" src="{{asset('src/img/test_icon/garage.png')}}" alt="Image Alternative text" title="Image Title" />
           <h5 class="banner-category-title">TVs & Appliances</h5>
           {{-- <p class="banner-category-desc">251 products</p> --}}
         </a>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 col-xs-4">
         <a class="banner-category" href="{{route('web.first_category',['main_category_id'=>encrypt(8)])}}">
           <img class="banner-category-img" src="{{asset('src/img/test_icon/baby-room.png')}}" alt="Image Alternative text" title="Image Title" />
           <h5 class="banner-category-title">Baby & Kids</h5>
@@ -161,45 +158,18 @@
 
   <!-- Start New Arrival -->
   <div class="container">  
-    <h3 class="widget-title">New Arrival
-    </h3>
+    <h3 class="widget-title-lg">New Arrival</h3>
     <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
       @if(isset($data['newarrival']) && !empty($data['newarrival']))
         @foreach($data['newarrival'] as $newarrival)
           <div class="owl-item">
             <div class="product  owl-item-slide">
-              {{-- <ul class="product-labels">
-                <li>stuff pick
-                </li>
-              </ul> --}}
               <div class="product-img-wrap">
                 <img class="product-img" src="{{asset('images/product/thumb/'.$newarrival->main_image.'')}}" alt="Image Alternative text" title="Image Title" />
               </div>
               <a class="product-link" href="{{ route('web.product_details',['product_id'=>encrypt($newarrival->id)]) }}">
               </a>
               <div class="product-caption">
-                {{-- <ul class="product-caption-rating">
-                  <li class="rated">
-                    <i class="fa fa-star">
-                    </i>
-                  </li>
-                  <li class="rated">
-                    <i class="fa fa-star">
-                    </i>
-                  </li>
-                  <li class="rated">
-                    <i class="fa fa-star">
-                    </i>
-                  </li>
-                  <li class="rated">
-                    <i class="fa fa-star">
-                    </i>
-                  </li>
-                  <li class="rated">
-                    <i class="fa fa-star">
-                    </i>
-                  </li>
-                </ul> --}}
                 <h5 class="product-caption-title">{{ $newarrival->name }}</h5>
                 <div class="product-caption-price">
                   <span class="product-caption-price-new"><i class="fa fa-rupee" style="font-size: 16px;"></i>{{ $newarrival->price }}
@@ -214,291 +184,6 @@
           </div>
         @endforeach
       @endif
-      {{-- <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels">
-          </ul>
-          <div class="product-img-wrap">
-            <img class="product-img" src="{{asset('src/img/test_product/furniture/6.jpg')}}" alt="Image Alternative text" title="Image Title" />
-          </div>
-          <a class="product-link" href="#">
-          </a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li>
-                <i class="fa fa-star">
-                </i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Modern Parson Dinner Dining Chair High Back Seat Kitchen Living Room Black Brown
-            </h5>
-            <div class="product-caption-price">
-              <span class="product-caption-price-new"><i class="fa fa-rupee" style="font-size: 16px;"></i>103
-              </span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels">
-          </ul>
-          <div class="product-img-wrap">
-            <img class="product-img" src="{{asset('src/img/test_product/woman_heels/1.jpg')}}" alt="Image Alternative text" title="Image Title" />
-          </div>
-          <a class="product-link" href="#">
-          </a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li>
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li>
-                <i class="fa fa-star">
-                </i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">New Authentic Gucci Patent Leather Open Toe Platform Pump,Gren, 309984 3125
-            </h5>
-            <div class="product-caption-price">
-              <span class="product-caption-price-new"><i class="fa fa-rupee" style="font-size: 16px;"></i>68
-              </span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>1 left
-              </li>
-              <li>Free Shipping
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels">
-          </ul>
-          <div class="product-img-wrap">
-            <img class="product-img" src="{{asset('src/img/test_product/35.jpg')}}" alt="Image Alternative text" title="Image Title" />
-          </div>
-          <a class="product-link" href="#">
-          </a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li>
-                <i class="fa fa-star">
-                </i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">LG G3 VS985 - 32GB - Verizon Smartphone - Metallic Black or Silk White - Great
-            </h5>
-            <div class="product-caption-price">
-              <span class="product-caption-price-new"><i class="fa fa-rupee" style="font-size: 16px;"></i>86
-              </span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>3 left
-              </li>
-              <li>Free Shipping
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels">
-            <li>stuff pick
-            </li>
-          </ul>
-          <div class="product-img-wrap">
-            <img class="product-img" src="{{asset('src/img/test_product/man_fashion/2.jpg')}}" alt="Image Alternative text" title="Image Title" />
-          </div>
-          <a class="product-link" href="#">
-          </a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li>
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li>
-                <i class="fa fa-star">
-                </i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Diesel Not So Basic Brown Leather Analog Mens Watch DZ1206
-            </h5>
-            <div class="product-caption-price">
-              <span class="product-caption-price-new"><i class="fa fa-rupee" style="font-size: 16px;"></i>125
-              </span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>1 left
-              </li>
-              <li>Free Shipping
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels">
-            <li>-70%
-            </li>
-          </ul>
-          <div class="product-img-wrap">
-            <img class="product-img" src="{{asset('src/img/test_product/woman_running_shoes/5.jpg')}}" alt="Image Alternative text" title="Image Title" />
-          </div>
-          <a class="product-link" href="#">
-          </a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">PUMA Faas 700 v2 Women's Running Shoes
-            </h5>
-            <div class="product-caption-price">
-              <span class="product-caption-price-old"><i class="fa fa-rupee" style="font-size: 16px;"></i>129
-              </span>
-              <span class="product-caption-price-new"><i class="fa fa-rupee" style="font-size: 16px;"></i>39
-              </span>
-            </div>
-            <ul class="product-caption-feature-list">
-              
-              <li>Free Shipping
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels">
-            <li>stuff pick
-            </li>
-          </ul>
-          <div class="product-img-wrap">
-            <img class="product-img" src="{{asset('src/img/test_product/woman_bags/4.jpg')}}" alt="Image Alternative text" title="Image Title" />
-          </div>
-          <a class="product-link" href="#">
-          </a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li>
-                <i class="fa fa-star">
-                </i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Vera Bradley Vera Tote Bag
-            </h5>
-            <div class="product-caption-price">
-              <span class="product-caption-price-new"><i class="fa fa-rupee" style="font-size: 16px;"></i>65
-              </span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div> --}}
     </div>
   </div>
 
@@ -548,10 +233,8 @@
 
   <!-- Start Best Selling -->
   <div class="container">
-    <h3 class="widget-title">Best Selling
-    </h3>
+    <h3 class="widget-title-lg">Best Selling</h3>
     <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
-
       @if(isset($data['best_selling']) && !empty($data['best_selling']))
         @foreach($data['best_selling'] as $best_selling)
           <div class="owl-item">
@@ -599,292 +282,6 @@
           </div>
         @endforeach
       @endif
-      {{-- <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels">
-            <li>hot
-            </li>
-          </ul>
-          <div class="product-img-wrap">
-            <img class="product-img" src="{{asset('src/img/test_product/man_fashion/2.jpg')}}" alt="Image Alternative text" title="Image Title" />
-          </div>
-          <a class="product-link" href="#">
-          </a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li>
-                <i class="fa fa-star">
-                </i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Diesel Not So Basic Brown Leather Analog Mens Watch DZ1206
-            </h5>
-            <div class="product-caption-price">
-              <span class="product-caption-price-new"><i class="fa fa-rupee" style="font-size:16px"></i>102
-              </span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels">
-            <li>hot
-            </li>
-          </ul>
-          <div class="product-img-wrap">
-            <img class="product-img" src="{{asset('src/img/test_product/furniture/5.jpg')}}" alt="Image Alternative text" title="Image Title" />
-          </div>
-          <a class="product-link" href="#">
-          </a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li>
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li>
-                <i class="fa fa-star">
-                </i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Metal Portable Bar Table w/ Carrying Case - Metal Construction Party
-            </h5>
-            <div class="product-caption-price">
-              <span class="product-caption-price-new"><i class="fa fa-rupee" style="font-size:16px"></i>72
-              </span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels">
-            <li>hot
-            </li>
-          </ul>
-          <div class="product-img-wrap">
-            <img class="product-img" src="{{asset('src/img/test_product/man_fashion/1.jpg')}}" alt="Image Alternative text" title="Image Title" />
-          </div>
-          <a class="product-link" href="#">
-          </a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li>
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li>
-                <i class="fa fa-star">
-                </i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Alpine Swiss Beck Mens Suede Chukka Desert Boots Lace Up Shoes Crepe Sole Oxford
-            </h5>
-            <div class="product-caption-price">
-              <span class="product-caption-price-new"><i class="fa fa-rupee" style="font-size:16px"></i>129
-              </span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>3 left
-              </li>
-              <li>Free Shipping
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels">
-            <li>-50%
-            </li>
-          </ul>
-          <div class="product-img-wrap">
-            <img class="product-img" src="{{asset('src/img/test_product/sports/6.jpg')}}" alt="Image Alternative text" title="Image Title" />
-          </div>
-          <a class="product-link" href="#">
-          </a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">72 Sq Ft Black Foam Interlocking Exercise Protective Tile Flooring Gym Floor Mat
-            </h5>
-            <div class="product-caption-price">
-              <span class="product-caption-price-old"><i class="fa fa-rupee" style="font-size:16px"></i>130
-              </span>
-              <span class="product-caption-price-new"><i class="fa fa-rupee" style="font-size:16px"></i>65
-              </span>
-            </div>
-            <ul class="product-caption-feature-list">
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels">
-            <li>hot
-            </li>
-          </ul>
-          <div class="product-img-wrap">
-            <img class="product-img" src="{{asset('src/img/test_product/32.jpg')}}" alt="Image Alternative text" title="Image Title" />
-          </div>
-          <a class="product-link" href="#">
-          </a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li>
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li>
-                <i class="fa fa-star">
-                </i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">LG G Flex D959 - 32GB - Titan Silver GSM Unlocked Android Smartphone (B)
-            </h5>
-            <div class="product-caption-price">
-              <span class="product-caption-price-new"><i class="fa fa-rupee" style="font-size:16px"></i>147
-              </span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels">
-            <li>-40%
-            </li>
-          </ul>
-          <div class="product-img-wrap">
-            <img class="product-img" src="{{asset('src/img/test_product/laptops/5.jpg')}}" alt="Image Alternative text" title="Image Title" />
-          </div>
-          <a class="product-link" href="#">
-          </a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li class="rated">
-                <i class="fa fa-star">
-                </i>
-              </li>
-              <li>
-                <i class="fa fa-star">
-                </i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Lenovo ThinkPad 11e 11.6" Notebook, AMD A4-6210 1.8GHz, 4GB RAM, 500GBHDD, W7Pro
-            </h5>
-            <div class="product-caption-price">
-              <span class="product-caption-price-old"><i class="fa fa-rupee" style="font-size:16px"></i>74
-              </span>
-              <span class="product-caption-price-new"><i class="fa fa-rupee" style="font-size:16px"></i>45
-              </span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div> --}}
     </div>
   </div>
 

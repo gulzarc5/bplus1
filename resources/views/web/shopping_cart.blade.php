@@ -7,14 +7,14 @@
       <h2 >My Shopping Bag</h2>
    </header>
    <div class="row">
-      <div class="col-md-10">
+      <div class="col-md-10 table-responsive">
             @if (Session::has('message'))
                <div class="alert alert-success">{{ Session::get('message') }}</div>
             @endif 
             @if (Session::has('error'))
                  <div class="alert alert-danger">{{ Session::get('error') }}</div>
             @endif
-         <table class="table table table-shopping-cart">
+         <table class="table table-shopping-cart"  style="overflow-x:auto;">
             <thead>
                <tr>
                   <th>Product</th>
@@ -70,12 +70,12 @@
            {{--  <li><span>Taxes</span><span>₹0</span></li> --}}
             <li><span>Total</span><span>₹{{ number_format($total,2) }}</span></li>
          </ul>
-         <a class="btn btn-primary" href="{{route('web.checkout')}}">Checkout</a>
+         <a class="btn btn-primary hidden-xs hidden-sm" href="{{route('web.checkout')}}">Checkout</a>
       </div>
    </div>
    <ul class="list-inline">
-      <li><a class="btn btn-default" href="#">Continue Shopping</a></li>
-      {{-- <li><a class="btn btn-default" href="#">Update Bag</a></li> --}}
+      <li><a class="btn btn-default" href="{{url('/')}}">Continue Shopping</a></li>
+      <li><a class="btn btn-primary hidden-md hidden-lg" href="{{route('web.checkout')}}">Checkout</a></li>
    </ul>
 </div>
 @else

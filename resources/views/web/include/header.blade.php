@@ -65,11 +65,12 @@
           </div>
         </div>
       </div>
-      <!-- Navbar -->
-      <nav class="navbar navbar-inverse navbar-main yamm">
+
+      <!--===================== Start Desktop Navbar =============================-->
+      <nav class="navbar navbar-inverse navbar-main yamm hidden-sm">
         <div class="container">
           <div class="navbar-header" >
-            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-nav-collapse" area_expanded="false">
+            <button class="navbar-toggle collapsed hidden-xs" type="button" data-toggle="collapse" data-target="#main-nav-collapse" area_expanded="false">
               <span class="sr-only">Main Menu
               </span>
               <span class="icon-bar">
@@ -83,7 +84,7 @@
               <img src="{{asset('src/img/logo-w.png')}}" alt="Image Alternative text" title="Image Title" />
             </a>
           </div>
-          <div class="collapse navbar-collapse" id="main-nav-collapse">
+          <div class="collapse navbar-collapse hidden-xs" id="main-nav-collapse">
             <ul class="nav navbar-nav" >
               <li class="dropdown">
                 <a href="#">
@@ -309,3 +310,24 @@
           </div>
         </div>
       </nav> 
+      <!--===================== End Desktop Navbar =============================-->
+
+      <!--===================== Start Desktop Navbar =============================-->
+      <nav role="navigation" class="hidden-lg">
+        <div id="menuToggle">
+          <input type="checkbox" />
+          <div class="ham">            
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <ul id="menu">
+            <a href="#"><li>Home</li></a>
+            <a href="#"><li>About</li></a>
+            <a href="#"><li>Info</li></a>
+            <a href="#"><li>Contact</li></a>
+            <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a>
+          </ul>
+        </div>
+      </nav>
+      <!--===================== End Mobile Navbar ==============================-->

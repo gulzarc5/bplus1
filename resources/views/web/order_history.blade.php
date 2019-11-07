@@ -6,8 +6,8 @@
       <h2>Your Order History</h2>
    </header>
    <div class="row">
-      <div class="col-md-12">
-         <table class="table table table-shopping-cart">
+      <div class="col-md-12 table-responsive">
+         <table class="table table-shopping-cart">
             <thead>
                <tr>
                   <th>Product Id</th>
