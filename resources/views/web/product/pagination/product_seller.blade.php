@@ -38,38 +38,17 @@
                         <a class="product-link" href="{{route('web.product_details',['product_id' => encrypt($product->id)])}}">
                         </a>
                         <div class="product-caption">
-                            <ul class="product-caption-rating">
-                            <li class="rated">
-                                <i class="fa fa-star">
-                                </i>
-                            </li>
-                            <li class="rated">
-                                <i class="fa fa-star">
-                                </i>
-                            </li>
-                            <li class="rated">
-                                <i class="fa fa-star">
-                                </i>
-                            </li>
-                            <li class="rated">
-                                <i class="fa fa-star">
-                                </i>
-                            </li>
-                            <li>
-                                <i class="fa fa-star">
-                                </i>
-                            </li>
-                            </ul>
                             <h5 class="product-caption-title">{{$product->name}}
                             </h5>
-                            <div class="product-caption-price">
-                            <span class="product-caption-price-new"><i class="fa fa-rupee" style="font-size:16px"></i>{{$product->price}}
-                            </span>
+
+                            <div class="flex-spc-betw">
+                                <div class="product-caption-price">
+                                    <span class="product-caption-price-new"><i class="fa fa-rupee" style="font-size: 16px;margin-top: 0"></i>{{ number_format($product->mrp,2)}}</span>
+                                </div>
+                                <div class="product-caption-old-price">
+                                    <span class="product-caption-old-price"> {{ number_format($product->mrp,2)}}</span>
+                                </div>
                             </div>
-                            <ul class="product-caption-feature-list">
-                            <li>Free Shipping
-                            </li>
-                            </ul>
                         </div>
                         </div>
                     </div>

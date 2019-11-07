@@ -1997,7 +1997,7 @@ header.main {
 .gap {
   display: block;
   position: relative;
-  margin: 30px 0 30px 0;
+  margin: 10px 0 10px 0;
   clear: both;
   overflow: hidden;
 }
@@ -3085,13 +3085,12 @@ header.main {
   font-size: 11px;
 }
 .product-caption-price {
-  margin-top: 10px;
   margin-bottom: 0;
-  font-size: 12px;
+  font-size: 8px;
 }
 .product-caption-price > span {
   display: inline-block;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1em;
 }
 .product-caption-price > span.product-caption-price-new {
@@ -3332,7 +3331,7 @@ header.main {
   width: 25%;
 }
 .product-page-price {
-  font-size: 40px;
+  font-size: 22px;
   font-weight: 700;
   line-height: 1em;
   margin-bottom: 1px;

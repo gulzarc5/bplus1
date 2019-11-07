@@ -1,5 +1,5 @@
 @extends('web.templet.master')
-@section('title','product')
+@section('title','Bplus || OnLine Shoping For Branded Electronics, Fashion and Household items')
 
 @section('content')
 
@@ -26,8 +26,6 @@
       <li class="active">Handbags</li>
     </ol>
     <ul class="category-selections clearfix">
-      <li><a class="fa fa-th-large category-selections-icon active" href="#"></a></li>
-      <li><a class="fa fa-th-list category-selections-icon" href="#"></a></li>
       <li>
         <span class="category-selections-sign">Sort by :</span>
         <select class="category-selections-select" id="product_sort">
@@ -37,27 +35,13 @@
           <option value="title_asc">Title : A - Z </option>
           <option value="title_dsc">Title : Z - A</option>
         </select>
-      </li>
-     {{--  <li>
-        <span class="category-selections-sign">Items :
-        </span>
-        <select class="category-selections-select">
-          <option>9 / page
-          </option>
-          <option selected>12 / page
-          </option>
-          <option>18 / page
-          </option>
-          <option>All
-          </option>
-        </select>
-      </li> --}}
+      </li>      
+      <li><a class="btn btn-primary filter-btn hidden-lg"> Filters</a></li>
     </ul>
   </header>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 cat-toggle" style="display: none;">
       <aside class="category-filters category-filters-color">
-
         {{-- FIlter Category Section  --}}
         @if(isset($seller_second_category) && !empty($seller_second_category))
           <div class="category-filters-section">
@@ -71,12 +55,10 @@
             </ul>
           </div>
         @endif
-
         <div class="category-filters-section popup-text" data-effect="mfp-move-from-top" >
           <h3 class="widget-title-sm">Price</h3>
           <input type="hidden" id="price-slider" />
         </div>
-
 
         @if(isset($products_sellers) && !empty($products_sellers))
         <div id="sellers_div">
@@ -91,17 +73,12 @@
                   @else
                     <input class="i-check"  type="checkbox"  name="sellers" value="{{ $products_seller->seller_id }}" />{{$products_seller->seller_name}}
                   @endif
-                  <!-- <span class="category-filters-amount">(55)
-                  </span> -->
                 </label>
               </div>
             @endforeach
-
           </div>
         </div>
-
         @endif
-
 
         @if(isset($products_brands) && !empty($products_brands))
         <div id="brands_div">
@@ -116,7 +93,6 @@
               </label>
             </div>
             @endforeach
-
           </div>
         </div>
         @endif
@@ -136,11 +112,8 @@
             @endforeach
           </div> 
         </div>
-
         @endif
-
-
-    </aside>
+      </aside>
     </div>
     <div class="col-md-9" id="pagination_div">
       {{-- //product list Page --}}
@@ -274,116 +247,18 @@ $(document).ready(function () {
     });
   }
 
-
-
-  // function product_Html(products){
-  //   var products_html = '';
-  //   if (products.length > 0) {
-  //     $.each(products, function(key,products){
-  //       var product_route = '{{route('web.product_details',['product_id' => encrypt(':id')])}}';
-  //       product_route = product_route.replace(':id', products.id);
-  //     products_html +='<div class="col-md-4">'+
-  //             '<div class="product ">'+
-  //                 '<ul class="product-labels"></ul>'+
-  //                 '<div class="product-img-wrap">'+
-  //                     '<img class="product-img-primary" src="{{asset('images/product/thumb/')}}'+'/'+products.main_image+'" alt="Image Alternative text" title="Image Title" />'+
-  //                     '<img class="product-img-alt" src="{{asset('images/product/thumb/')}}'+'/'+products.main_image+'" alt="Image Alternative text" title="Image Title" />'+
-  //                 '</div>'+
-  //                 '<a class="product-link" href="">'+
-  //                 '</a>'+
-  //                 '<div class="product-caption">'+
-  //                 '<h5 class="product-caption-title">'+products.name+'</h5>'+
-  //                     '<div class="product-caption-price">'+
-  //                         '<span class="product-caption-price-new">'+products.price+'</span>'+
-  //                     '</div>'+
-  //                     '<ul class="product-caption-feature-list">'+
-  //                         {{-- <li>3 left
-  //                         </li> --}}
-  //                         '<li>Free Shipping</li>'+
-  //                     '</ul>'+
-  //                 '</div>'+
-  //             '</div>'+
-  //           '</div>';
-  //     })
-
-  //   }
-  //   $("#products_div").html(products_html);
-  // }
 </script>
 
-
+{{-- Filter toggle --}}
+<script>
+$(document).ready(function(){
+  $(".filter-btn").click(function(){
+    $(".cat-toggle").toggle(500);
+  });
+});
+</script>
 
 @endsection
 
 
-<script type="text/javascript">
-   //*************Sellers Data Add In Html Seller Div***************
-           
-            // if (response.sellers && (response.sellers.length > 0)) {
 
-            // }
-            // if (response.brands) {
-            //   brands_html(response.brands);
-            // }
-            // if (response.colors) {
-            //   colors_html(response.colors);
-            // }
-            // if (response.sellers) {
-            //   sallers_html(response.sellers);
-            // }
-    // function brands_html(brands) {
-  //   if (brands.length > 0) {
-  //     var brand_html = '<div class="category-filters-section">'+
-  //         '<h3 class="widget-title-sm">Brands</h3>';
-  //     $.each(brands, function(key,brand){
-  //       brand_html +='<div class="checkbox">'+
-  //           '<label>'+
-  //             '<input class="i-check" style="    position: absolute;margin-left: 5px;margin-top: 1px;" type="checkbox"  name="brand" value="'+brand.brand_id+'" />'+brand.brand_name+''+
-  //             '<span class="category-filters-amount">('+brand.total+')</span>'+
-  //           '</label>'+
-  //         '</div>'; 
-  //     });
-  //     brand_html +='</div>';
-  //     $("#brands_div").html(brand_html);
-  //   }else{
-
-  //   }
-  // }
-
-  //  function colors_html(colors) {
-  //   if (colors.length > 0) {
-  //     var colors_html = '<div class="category-filters-section">'+
-  //         '<h3 class="widget-title-sm">Colors</h3>';
-  //     $.each(colors, function(key,color){
-  //       colors_html +='<div class="checkbox">'+
-  //           '<label>'+
-  //             '<input class="i-check" style="position: absolute;margin-left: 5px;margin-top: 1px;" type="checkbox"  name="brand" value="'+color.color_id+'" />'+color.color_name+''+
-  //             '<span style="height: 15px; width: 30px;   background-color: '+color.color_value+'; border-radius: 30%; display: inline-block;"></span><span class="category-filters-amount">('+color.total+')</span>'+
-  //           '</label>'+
-  //         '</div>'; 
-  //     });
-  //     colors_html +='</div>';
-  //     $("#colors_div").html(colors_html);
-  //   }else{
-
-  //   }
-  // }
-
-  //  function sallers_html(sellers) {
-  //   if (sellers.length > 0) {
-  //     var sellers_Html = '<div class="category-filters-section">'+
-  //         '<h3 class="widget-title-sm">Colors</h3>';
-  //     $.each(sellers, function(key,seller){
-  //       sellers_Html +='<div class="checkbox">'+
-  //           '<label>'+
-  //             '<input class="i-check" style="position: absolute;margin-left: 5px;margin-top: 1px;" type="checkbox"  name="brand" value="'+seller.seller_id+'" />'+seller.seller_name+
-  //           '</label>'+
-  //         '</div>'; 
-  //     });
-  //     sellers_Html +='</div>';
-  //     $("#sellers_div").html(sellers_Html);
-  //   }else{
-
-  //   }
-  // }
-</script>
