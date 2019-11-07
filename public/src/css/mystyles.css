@@ -11,6 +11,11 @@
     -webkit-box-orient: vertical;  
     overflow: hidden;
 }
+.product-caption-price span i{
+    font-size: 14px!important;
+    margin-top: 0!important;
+    margin-right: 3px!important;
+}
 .product-caption h3{
     font-size: 16px;
     font-weight: 700;
