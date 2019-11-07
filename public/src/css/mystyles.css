@@ -29,6 +29,9 @@
 .ml-20{
     margin-left: 20px;
 }
+.pl-30{
+    padding-left: 30px;
+}
 .mb-10{
     margin-bottom: 10px;
 }
@@ -44,6 +47,28 @@
 }
 #address_div input[type="radio"]{
     margin-right: 7px; 
+}
+.mobile-cart i{
+    font-size: 25px;
+    color: #eee;
+    padding: 3px;
+    border-radius: 50%;
+    position: absolute;
+    top: 16px;
+    left: 49%;
+    z-index: 9
+}
+.mobile-cart span{
+    position: absolute;
+    top: 12%;
+    left: 54%;
+    color: #3b2b2b;
+    background: #ffffff;
+    padding: 0 7px;
+    border-radius: 50%;
+}
+#menu .btn{
+    width: 125px;
 }
 /*================
      Mobile   
@@ -74,6 +99,9 @@
         font-size: 10px;
         padding: 0 5px;
     }
+    .mobile-mt{
+      margin-top: -47px;
+    }
 }   
 
 
@@ -93,7 +121,17 @@
   -webkit-user-select: none;
   user-select: none;
 }
+.menu-othr{
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 13px;
+  transition: 0.4s;
 
+}
 #menuToggle input
 {
   display: block;
@@ -101,7 +139,7 @@
     height: 43px;
     position: relative;
     top: -100px;
-    right: -268px;
+    right: -73.3%;
     cursor: pointer;
     opacity: 0;
     z-index: 2;
@@ -179,12 +217,10 @@
 #menu
 {
   position: absolute;
-  width: 300px;
-  margin: -100px 0 0 -50px;
-  padding: 50px;
-  padding-top: 125px;
-  
-  background: #ededed;
+  width: 100%;
+  margin: -97px 0 0 -50px;
+  padding: 15px; 
+  background: #fff;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
@@ -197,8 +233,8 @@
 
 #menu li
 {
-  padding: 10px 0;
-  font-size: 22px;
+  padding: 0;
+  font-size: 16px;
 }
 
 /*
@@ -207,4 +243,77 @@
 #menuToggle input:checked ~ ul
 {
   transform: none;
+}
+#menuToggle .dropdown-menu-category-icon{
+    position: relative; 
+    width: 34px;
+    text-align: center;
+    font-size: 16px;
+    opacity: 0.7;
+}
+.menu-top {
+  margin-bottom: 20px;
+}
+.menu-top h6{
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin: 0 17px 13px;
+}
+#menuToggle .accordion {
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 13px;
+  transition: 0.4s;
+}
+
+#menuToggle .active, .accordion:hover {
+  color: #1b3046;
+  font-weight: 500;
+}
+
+#menuToggle .accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+  margin-top: 12px;
+  margin-right: 10px;
+  padding: 0 4px;
+  background: #eee;
+  border-radius: 2px;
+}
+
+#menuToggle .active:after {
+  content: "\2212";
+}
+
+#menuToggle .panel {
+  padding: 0 18px;
+  background-color: #eeeeeea1;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  margin: -6px 0 7px;
+}
+.mobile-dropdown li {
+  border-bottom: none!important;
+  list-style: none;
+}
+.mobile-dropdown {
+  padding-left: 17px;
+}
+.mobile-dropdown a{
+  color: #0c0909;
+  font-weight: 100;
+  font-size: 13px
+}
+.mobile-dropdown a i{
+  font-size: 9px;
+  margin-right: 5px;
 }

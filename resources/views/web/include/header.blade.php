@@ -67,7 +67,7 @@
       </div>
 
       <!--===================== Start Desktop Navbar =============================-->
-      <nav class="navbar navbar-inverse navbar-main yamm hidden-sm">
+      <nav class="navbar navbar-inverse navbar-main yamm">
         <div class="container">
           <div class="navbar-header" >
             <button class="navbar-toggle collapsed hidden-xs" type="button" data-toggle="collapse" data-target="#main-nav-collapse" area_expanded="false">
@@ -83,8 +83,18 @@
             <a class="navbar-brand" href="{{url('/')}}">
               <img src="{{asset('src/img/logo-w.png')}}" alt="Image Alternative text" title="Image Title" />
             </a>
+            <a class="hidden-lg mobile-cart" href="http://localhost/bplus1/public/Cart/shopping_cart">
+              <i class="fa fa-shopping-cart"></i>
+              <span>
+                @if(isset($header_data) && !empty($header_data) && isset($header_data['cart_data']) && !empty($header_data['cart_data']) )
+                  {{ count($header_data['cart_data'])}}
+                @else
+                  0
+                @endif
+              </span>
+            </a>
           </div>
-          <div class="collapse navbar-collapse hidden-xs" id="main-nav-collapse">
+          <div class="collapse navbar-collapse hidden-md hidden-xs" id="main-nav-collapse">
             <ul class="nav navbar-nav" >
               <li class="dropdown">
                 <a href="#">
@@ -161,9 +171,6 @@
                     @endforeach
                   @endif               
                 </ul>
-                {{--======================== 
-                        Mobile Menu
-                 ========================--}}
               </li>
             </ul>
             <form class="navbar-form navbar-left navbar-main-search" role="search">
@@ -279,13 +286,73 @@
             <span></span>
             <span></span>
           </div>
-          <ul id="menu">
-            <a href="#"><li>Home</li></a>
-            <a href="#"><li>About</li></a>
-            <a href="#"><li>Info</li></a>
-            <a href="#"><li>Contact</li></a>
-            <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a>
+          <ul id="menu">    
+            <div class="menu-top">
+              <h6 class="">Welcome to Bplus</h6>
+              <div class="row">
+                @if(Auth::guard('buyer')->id())
+                  <div class="col-xs-6 pl-30"><a class="btn btn-primary btn-lg" href="{{route('web.myprofile')}}">Profile</a></div>
+                  <div class="col-xs-6 pl-30"><a class="btn btn-primary btn-lg" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a></div>
+                  <form id="logout-form" action="{{ route('web.buyerLogout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
+                @else                  
+                  <div class="col-xs-6 pl-30"><a class="btn btn-primary btn-lg" href="{{route('web.userLoginForm')}}">Login</a></div>
+                  <div class="col-xs-6 pl-30"><a class="btn btn-primary btn-lg" href="{{route('web.userRegistrationForm')}}">Signup</a></div>
+                @endif
+              </div>
+            </div>
+            @if(isset($header_data) && !empty($header_data) && isset($header_data['category_list']) && !empty($header_data['category_list']))
+
+              @foreach($header_data['category_list'] as $category)        
+              <li>
+                <a class="accordion"><i class="fa fa-home dropdown-menu-category-icon"></i>{{ $category['name'] }}</a>
+                <div class="panel">
+                  <ul class="mobile-dropdown">
+                    @foreach($category['first_category'] as $first_category)
+                      <li><a href="{{route('web.sub_category',['first_id'=>encrypt($first_category->id)])}}"><i class="fa fa-list"></i>{{ $first_category->name }}</a></li>
+                    @endforeach              
+                  </ul>
+                </div>           
+              </li>
+              @endforeach
+            @endif
+              <li>
+                <a class="menu-othr"><i class="fa fa-home dropdown-menu-category-icon"></i>My Cart</a>
+              </li>   
+              <li>
+                <a class="menu-othr"><i class="fa fa-home dropdown-menu-category-icon"></i>My Orders</a>
+              </li> 
+              @if(Auth::guard('buyer')->id())
+                @if (Auth::guard('buyer')->user()->user_role == '1')
+                  <li><a class="menu-othr" href="{{route('seller_application')}}" data-effect="mfp-move-from-top" class=""><i class="fa fa-home dropdown-menu-category-icon"></i>Become A seller</a></li>
+                  <br>
+                @else
+                  <li><a class="menu-othr" href="{{url('seller_login')}}" data-effect="mfp-move-from-top" target="_blank" class=""><i class="fa fa-home dropdown-menu-category-icon"></i>Login To Seller Panel</a></li>
+                <br>
+                @endif
+              @else
+                <li>
+                  <a class="menu-othr"><i class="fa fa-home dropdown-menu-category-icon"></i>Seller Login</a>
+                </li> 
+              @endif
           </ul>
         </div>
       </nav>
       <!--===================== End Mobile Navbar ==============================-->
+      <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          } 
+        });
+      }
+      </script>

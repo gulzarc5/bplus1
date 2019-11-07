@@ -1,5 +1,5 @@
 @extends('web.templet.master')
-@section('title','product')
+@section('title','Bplus || OnLine Shoping For Branded Electronics, Fashion and Household items')
 
 @section('content')
 <div class="container">

@@ -5,7 +5,7 @@
 @section('content')
 
   <!-- Start Slider -->
-  <div class="owl-carousel owl-loaded owl-nav-dots-inner mb-10" data-options='{"items":1,"loop":true,"autoplay":true,"autoplayTimeout":5000}'>
+  <div class="owl-carousel owl-loaded owl-nav-dots-inner mb-10 mobile-mt" data-options='{"items":1,"loop":true,"autoplay":true,"autoplayTimeout":5000}'>
     <div class="owl-item">
       <div class="slider-item" style="background-image:url('src/img/slider/slider1.jpg');">
         <div class="container">

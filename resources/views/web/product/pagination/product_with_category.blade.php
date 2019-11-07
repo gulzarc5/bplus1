@@ -1,7 +1,7 @@
 <div class="row" data-gutter="15" id="products_div">
     @if(isset($product_against_seller) && !empty($product_against_seller))
       @foreach($product_against_seller as $products)
-        <div class="col-md-4">
+        <div class="col-md-4 col-xs-6">
           <div class="product ">
               <ul class="product-labels">
               </ul>
