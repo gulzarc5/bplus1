@@ -249,7 +249,7 @@
                     
                       
 
-                    <li><a href="{{route('web.order_history')}}" data-effect="mfp-move-from-top" class="">Your Orders</a></li>
+                    <li><a href="{{route('web.order_history')}}" data-effect="mfp-move-from-top" class="">My Orders</a></li>
                     <br>
 
 
@@ -278,7 +278,7 @@
       <!--===================== End Desktop Navbar =============================-->
 
       <!--===================== Start Desktop Navbar =============================-->
-      <nav role="navigation" class="hidden-lg">
+      <nav role="navigation" class="hidden-lg" style="margin-bottom: -47px;">
         <div id="menuToggle">
           <input type="checkbox" />
           <div class="ham">            
@@ -316,12 +316,9 @@
                 </div>           
               </li>
               @endforeach
-            @endif
+            @endif   
               <li>
-                <a class="menu-othr"><i class="fa fa-home dropdown-menu-category-icon"></i>My Cart</a>
-              </li>   
-              <li>
-                <a class="menu-othr"><i class="fa fa-home dropdown-menu-category-icon"></i>My Orders</a>
+                <a href="{{route('web.order_history')}}" class="menu-othr"><i class="fa fa-home dropdown-menu-category-icon"></i>My Orders</a>
               </li> 
               @if(Auth::guard('buyer')->id())
                 @if (Auth::guard('buyer')->user()->user_role == '1')
@@ -333,7 +330,7 @@
                 @endif
               @else
                 <li>
-                  <a class="menu-othr"><i class="fa fa-home dropdown-menu-category-icon"></i>Seller Login</a>
+                  <a href="{{url('seller_login')}}" class="menu-othr"><i class="fa fa-home dropdown-menu-category-icon"></i>Seller Login</a>
                 </li> 
               @endif
           </ul>

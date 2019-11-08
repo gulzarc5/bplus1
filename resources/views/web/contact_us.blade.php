@@ -9,7 +9,7 @@
   <div class="gap gap-small">
   </div>
   <div class="row" data-gutter="60">
-    <div class="col-md-5">
+    <div class="col-md-8">
       <h3 class="widget-title">Leave a Message
       </h3>
       <hr>
@@ -39,40 +39,40 @@
         <input class="btn btn-primary" type="submit" value="Send a Message" />
       </form>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-4">
       <div class="row">
-        <div class="col-md-4">
-          <h3 class="widget-title">Assam
-          </h3>
+        <div class="col-md-12">
+          <h3 class="widget-title">Assam</h3>
           <ul class="contact-list">
             <li>
               <h5>Email
               </h5>
-              <a href="#">usa@bplus.com
+              <a href="#">barakplus1@gmail.com
               </a>
             </li>
             <li>
               <h5>Phone Number
               </h5>
-              <p>+91-7676545654
+              <p>+91-9101919802
+              </p>
+              <p>+91-9101382510
               </p>
             </li>
             <li>
-              <h5>Skype
+              <h5>GST
               </h5>
-              <p>Bplus
+              <p> 18 PL4503D1ZB
               </p>
             </li>
-            <li>
               <h5>Address
               </h5>
-              <address>Kamrup
-                <br/>Guwahati, Assam
+              <address>Niyargram Part 2, Niyargram
+                <br/>Cachar, Assam
               </address>
             </li>
           </ul>
         </div>
-        <div class="col-md-4">
+       {{--  <div class="col-md-4">
           <h3 class="widget-title">Meghalaya
           </h3>
           <ul class="contact-list">
@@ -133,7 +133,7 @@
               </address>
             </li>
           </ul>
-        </div>
+        </div> --}}
       </div>
     </div>
   </div>

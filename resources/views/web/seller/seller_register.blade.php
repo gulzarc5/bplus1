@@ -56,7 +56,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info"></label><br>
-                                <input type="text" name="password" id="password" class="form-control sell_login" placeholder="Enter Password">
+                                <input type="password" name="password" id="password" class="form-control sell_login" placeholder="Enter Password">
                                 @if($errors->has('password'))
         	                    	<span class="invalid-feedback" role="alert" style="color:red">
         		                        <strong>{{ $errors->first('password') }}</strong>
@@ -66,7 +66,7 @@
 
                             <div class="form-group">
                                 <label for="password-confirm" class="text-info"></label><br>
-                                <input type="text" name="password_confirmation"  class="form-control sell_login" placeholder="Re Enter Password">
+                                <input type="password" name="password_confirmation"  class="form-control sell_login" placeholder="Re Enter Password">
                                 @if($errors->has('password_confirmation'))
                                     <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>

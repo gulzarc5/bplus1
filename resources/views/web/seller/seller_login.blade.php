@@ -40,7 +40,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info"></label><br>
-                                <input type="text" name="password" id="password" class="form-control sell_login" placeholder="Enter Your Password">
+                                <input type="password" name="password" id="password" class="form-control sell_login" placeholder="Enter Your Password">
                                 @if($errors->has('password'))
         	                    	<span class="invalid-feedback" role="alert" style="color:red">
         		                        <strong>{{ $errors->first('password') }}</strong>

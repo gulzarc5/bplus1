@@ -37,7 +37,8 @@ class ProductController extends Controller
 	    	->where('status',1)
 	    	->where('second_category',$second_category)
 	    	->where('seller_id',$products_Seller->seller_id)
-	    	->get();
+	    	->limit(6)
+            ->get();
 
             $seller_address = DB::table('seller_details')
             ->select('state.name as state_name','city.name as city_name','seller.name as seller_name')

@@ -231,28 +231,6 @@
                <div class="gap gap-small">
                </div>
             </div>
-            <div class="mfp-with-anim mfp-dialog clearfix" id="changepass-form" style="margin-top: -20px; display: none;">
-               <form>
-                  <div class="form-group">
-                     <label>Recent Password
-                     </label>
-                     <input class="form-control" type="text" />
-                  </div>
-                  <div class="form-group">
-                     <label>New Password
-                     </label>
-                     <input class="form-control" type="text" />
-                  </div>
-                  <div class="form-group">
-                     <label>Comfirm Password
-                     </label>
-                     <input class="form-control" type="text" />
-                  </div>
-                  <input class="btn btn-primary" type="submit" value="Sign In" />
-               </form>
-               <div class="gap gap-small">
-               </div>
-            </div>
          </div>
       </div>
    </div>

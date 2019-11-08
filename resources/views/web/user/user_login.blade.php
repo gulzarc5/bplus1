@@ -32,7 +32,7 @@
           </div>
           <div class="form-group">
             <label>Password</label>
-            <input class="form-control" type="text" name="password" />
+            <input class="form-control" type="password" name="password" />
               @if($errors->has('password'))
                   <span class="invalid-feedback" role="alert" style="color:red">
                       <strong>{{ $errors->first('password') }}</strong>

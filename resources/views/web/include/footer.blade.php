@@ -7,101 +7,42 @@
         <a class="navbar-brand" href="Home" style="margin-top: -13px;">
             <img src="{{asset('src/img/logo-w.png')}}" alt="Image Alternative text" title="Image Title" />
             </a>
-        <br>
-        <br>
-        <p>Volutpat per eget molestie platea suspendisse eget tortor pharetra magna nam senectus
-        </p>
+        <br><br>
+        <p>Bplus is a network centric B2B trade platform, designed specifically for small & medium businesses in India</p>
         <ul class="main-footer-social-list">
-          <li>
-            <a class="fa fa-facebook" href="#">
-            </a>
-          </li>
-          <li>
-            <a class="fa fa-twitter" href="#">
-            </a>
-          </li>
-          <li>
-            <a class="fa fa-pinterest" href="#">
-            </a>
-          </li>
-          <li>
-            <a class="fa fa-instagram" href="#">
-            </a>
-          </li>
-          <li>
-            <a class="fa fa-google-plus" href="#">
-            </a>
-          </li>
+          <li><a class="fa fa-facebook" href="#"></a></li>
+          <li><a class="fa fa-twitter" href="#"></a></li>
+          <li><a class="fa fa-pinterest" href="#"></a></li>
+          <li><a class="fa fa-instagram" href="#"></a></li>
+          <li><a class="fa fa-google-plus" href="#"></a></li>
         </ul>
       </div>
-      <div class="col-md-3">
-        <h4 class="widget-title-sm">Popular Tags
-        </h4>
-        <ul class="main-footer-tag-list">
-          <li>
-            <a href="#">New Season
-            </a>
-          </li>
-          <li>
-            <a href="#">Watches
-            </a>
-          </li>
-          <li>
-            <a href="#">Woman
-            </a>
-          </li>
-          <li>
-            <a href="#">Mobiles
-            </a>
-          </li>
-          <li>
-            <a href="#">Kitchen
-            </a>
-          </li>
-          <li>
-            <a href="#">Shoes
-            </a>
-          </li>
-          <li>
-            <a href="#">Toy
-            </a>
-          </li>
-          <li>
-            <a href="#">jeans
-            </a>
-          </li>
-          <li>
-            <a href="#">Stationery
-            </a>
-          </li>
-          <li>
-            <a href="#">Laptops
-            </a>
-          </li>
+      <div class="col-md-3 foot-link">
+        <h3 class="widget-title-sm" style="text-decoration: underline;">Addtional Links
+        </h3>
+        <ul style="list-style :none;padding: 0 7px;">
+          <li><a href="{{url('about_us')}}">About us</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Terms of use</a></li>
+          <li><a href="{{url('contact_us')}}">Contact us</a></li>
         </ul>
       </div>
-      <div class="col-md-3">
-        <h4 class="widget-title-sm">Newsletter
-        </h4>
-        <form>
-          <div class="form-group">
-            <label>Sign up to the newsletter
-            </label>
-            <input class="newsletter-input form-control" placeholder="Your e-mail address" type="text" />
-          </div>
-          <input class="btn btn-primary" type="submit" value="Sign up" />
-        </form>
+      <div class="col-md-3 foot-link">
+        <h3 class="widget-title-sm" style="text-decoration: underline;">My Account
+        </h3>
+        <ul style="list-style :none;padding: 0 7px;">
+          <li><a href="{{route('web.myprofile')}}">My Profile</a></li>
+          <li><a href="{{route('web.order_history')}}">My Orders</a></li>
+          <li><a href="{{route('web.viewCart')}}">My Cart</a></li>
+          <li><a href="{{url('seller_login')}}">Login to seller panel</a></li>
+        </ul>
       </div>
     </div>
-    <ul class="main-footer-links-list">
+    {{-- <ul class="main-footer-links-list">
       <li>
         <a href="">About Us
         </a>
       </li>
-      <!-- <li><a href="#">Jobs</a>
-</li>
-<li><a href="#">Legal</a>
-</li> -->
       <li>
         <a href="#">Support & Customer Service
         </a>
@@ -118,8 +59,6 @@
         <a href="#">Terms
         </a>
       </li>
-      <!-- <li><a href="#">Press</a>
-</li> -->
       <li>
         <a href="#">Shipping
         </a>
@@ -128,7 +67,7 @@
         <a href="#">Payments & Refunds
         </a>
       </li>
-    </ul>
+    </ul> --}}
     <img class="main-footer-img" src="{{asset('src/img/test_footer2.png')}}" alt="Image Alternative text" title="Image Title" />
   </div>
 </footer>
@@ -139,7 +78,7 @@
         <p class="copyright-text">Copyright &copy; 
           <a href="#">Bplus
           </a> 2019. Design by
-          <a href="http://webinfotech.net.in/" target="_blank">WEB INFOTECH
+          <a href="https://webinfotech.net.in/" target="_blank">WEB INFOTECH
           </a>. All rights reseved
         </p>
       </div>
