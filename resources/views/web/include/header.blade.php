@@ -80,7 +80,7 @@
               <span class="icon-bar">
               </span>
             </button>
-            <a class="navbar-brand" href="{{url('/')}}">
+            <a class="navbar-brand hidden-lg hidden-md" href="{{url('/')}}">
               <img src="{{asset('src/img/logo-w.png')}}" alt="Image Alternative text" title="Image Title" />
             </a>
             <a class="hidden-lg mobile-cart" href="http://localhost/bplus1/public/Cart/shopping_cart">
@@ -172,14 +172,12 @@
                   @endif               
                 </ul>
               </li>
-            </ul>
-            <form class="navbar-form navbar-left navbar-main-search" role="search">
-              <div class="form-group">
-                <input class="form-control" type="text" placeholder="Search the Entire Store..." />
-              </div>
-              <a class="fa fa-search navbar-main-search-submit" href="#">
+            </ul>            
+            <div style="display:inline-flex;justify-content:center;width: 66%;">
+              <a class="navbar-brand" href="{{url('/')}}">
+                <img src="{{asset('src/img/logo-w.png')}}" alt="Image Alternative text" style="margin-top: -4px;" />
               </a>
-            </form>
+            </div>
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
                 <a href="{{route('web.viewCart')}}">
