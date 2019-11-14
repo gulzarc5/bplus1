@@ -37,9 +37,36 @@ Route::group(['namespace'=>'Api'],function(){
 	Route::get('product/image/thumb/{image}', 'ProductController@productImageThumb');
 
 	Route::get('product/single/view/{product_id}', 'ProductController@singleProductView');
+	Route::post('product/filter', 'ProductController@productFilter');
+
+	Route::post('user/create','UserController@userCreate');
+	Route::post('user/login','UserController@userLogin');
+
+	Route::group(['middleware'=>'auth:api'],function(){
+		Route::get('user/profile/{user_id}','UserController@myProfile');
+		Route::post('user/profile/update','UserController@myProfileUpdate');
+		Route::post('user/change/password','UserController@changePassword');
+
+		Route::post('user/shipping/address/add','UserController@addShippingAddress');
+		Route::get('user/shipping/address/list/{user_id}','UserController@ShippingAddressList');
+		Route::get('user/shipping/address/delete/{address_id}','UserController@ShippingAddressDelete');
+		Route::get('user/shipping/address/{address_id}','UserController@ShippingAddressSingle');
+		Route::post('user/shipping/update/','UserController@ShippingAddressUpdate');
+
+		Route::post('cart/add','CartController@cartAdd');
+		Route::get('cart/products/{user_id}','CartController@cartProducts');
+		Route::post('cart/update/','CartController@cartUpdate');
+		Route::get('cart/delete/{cart_id}','CartController@cartDelete');
+
+		Route::post('place/order','OrderController@orderPlace');
+		Route::post('update/payment/request/id','OrderController@updatePaymentRequestId');
+		Route::post('update/payment/id','OrderController@updatePaymentId');
+
+		Route::get('order/history/{user_id}','OrderController@orderHistory');
+		Route::get('order/cancel/{order_details_id}','OrderController@orderCancel');
 
 
-
+	});
 
 });
 

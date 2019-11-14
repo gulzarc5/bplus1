@@ -69,6 +69,13 @@ class Handler extends ExceptionHandler
             case 'buyer':
                 $login = 'web.buyerLogin';
                 break;
+            case 'api':
+                $response = [
+                    'status'=>false,
+                    'login_error' => 1,
+                    'message'=>'unauthorize'
+                ];
+                return response()->json($response, 200);
             default:
                 $login = 'login';
                 break;

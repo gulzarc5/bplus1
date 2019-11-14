@@ -1,6 +1,6 @@
 <div class="gap">
 </div>
-<footer class="main-footer">
+<footer class="main-footer" style="margin-top:60px">
   <div class="container">
     <div class="row row-col-gap" data-gutter="60">
       <div class="col-md-3">

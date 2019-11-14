@@ -95,33 +95,33 @@ class ProductController extends Controller
 	        ->distinct()
 	        ->get();
 
-	    $products_brands=DB::table('products')
-            ->select('brand_name.id as brand_id', 'brand_name.name as brand_name',DB::raw('count(*) as total'))
-            ->join('brand_name','products.brand_id','=','brand_name.id')
+        $products_brands=DB::table('products')
+            ->select('brands.id as brand_id', 'brands.name as brand_name',DB::raw('count(*) as total'))
+            ->join('brands','products.brand_id','=','brands.id')
             ->whereNull('products.deleted_at')
             ->where('products.status',1)
             ->where('products.second_category',$second_category)
             ->distinct()
-            ->groupBy('brand_name.id','brand_name.name')
+            ->groupBy('brands.id','brands.name')
             ->get();
         $product_colors = DB::table('products')
-            ->select('color.id as color_id','color.name as color_name','color.value as color_value',DB::raw('count(*) as total'))
+            ->select('colors.id as color_id','colors.name as color_name','colors.value as color_value',DB::raw('count(*) as total'))
             ->join('product_colors','products.id','=','product_colors.product_id')
-            ->join('color','product_colors.color_id','=','color.id')
+            ->join('colors','product_colors.color_id','=','colors.id')
             ->where('products.second_category',$second_category)
-            ->distinct('color.id')
-            ->groupBy('color.id','color.name','color.value')
+            ->distinct('colors.id')
+            ->groupBy('colors.id','colors.name','colors.value')
             ->get();
 
         $limit = ($page*10)-10;
 
-        $product_min_max_price = DB::table('products')
-            ->select(DB::raw('min(price) as min_price'),DB::raw('max(price) as max_price'))
-            ->whereNull('deleted_at')
-            ->where('status',1)
-            ->where('second_category',$second_category)
-            ->where('seller_id',$seller_id)
-            ->first();
+        // $product_min_max_price = DB::table('products')
+        //     ->select(DB::raw('min(price) as min_price'),DB::raw('max(price) as max_price'))
+        //     ->whereNull('deleted_at')
+        //     ->where('status',1)
+        //     ->where('second_category',$second_category)
+        //     ->where('seller_id',$seller_id)
+        //     ->first();
 
         $product_against_seller=DB::table('products')
             ->whereNull('deleted_at')
@@ -143,7 +143,7 @@ class ProductController extends Controller
 				'sellers' => $products_sellers,
 				'brands' => $products_brands,
 				'colors' => $product_colors,
-                'price_range' => $product_min_max_price,
+                // 'price_range' => $product_min_max_price,
 			],
 			'products' => $product_against_seller,
 		];
@@ -195,8 +195,8 @@ class ProductController extends Controller
     {        
 
         $product=DB::table('products')
-        ->select('products.*','brand_name.name as brand_name')
-        ->join('brand_name','brand_name.id','=','products.brand_id')
+        ->select('products.*','brands.name as brand_name')
+        ->join('brands','brands.id','=','products.brand_id')
         ->whereNull('products.deleted_at')
         ->where('products.status',1)
         ->where('products.id',$product_id)
@@ -216,12 +216,21 @@ class ProductController extends Controller
         ->where('status',1)
         ->get();
         $product_color = DB::table('product_colors')
-        ->select('product_colors.id as color_id','color.name as color_name','color.value as color_value')
-        ->join('color','product_colors.color_id','color.id')
+        ->select('product_colors.id as color_id','colors.name as color_name','colors.value as color_value')
+        ->join('colors','product_colors.color_id','colors.id')
         ->where('product_colors.product_id',$product_id)
         ->where('product_colors.status','1')
         ->whereNull('product_colors.deleted_at')
         ->get();
+        $related_products = null;
+        if ($product) {
+            $related_products = DB::table('products')
+                ->where('second_category',$product->second_category)
+                ->whereNull('deleted_at')
+                ->where('status',1)
+                ->limit(10)
+                ->get();
+        }
         
 
         $data = [
@@ -229,6 +238,7 @@ class ProductController extends Controller
             'product_images' => $product_images,
             'product_color'=> $product_color,
             'seller_details' => $seller_details,
+            'related_products' => $related_products,
         ];
 
 
@@ -240,5 +250,155 @@ class ProductController extends Controller
         ];
 
         return response()->json($response, 200);
+    }
+
+    public function productFilter(Request $request)
+    {
+        $second_category = $request->input('second_category');
+        $sellers = $request->input('sellers_id'); // Array of Sellers
+        $brands = $request->input('brands_id'); //Array of Brands
+        $colors = $request->input('colors_id'); //Array of Colors
+        $min_price = $request->input('min_price'); 
+        $max_price = $request->input('max_price'); 
+        $sort = $request->input('sort_by');
+        $page = $request->input('page_no');
+
+        if (empty($page)) {
+            $response = [
+                'status' => false,
+                'current_page' =>1,
+                'total_page' =>1,
+                'message' => 'Page Number Field Required',
+                'data' => null,
+    
+            ];
+            return response()->json($response, 200);
+        }
+
+        if (empty($second_category)) {
+            $response = [
+                'status' => false,
+                'current_page' =>1,
+                'total_page' =>1,
+                'message' => 'Category Field Required',
+                'data' => null,
+    
+            ];
+            return response()->json($response, 200);
+        }
+        if (!empty($min_price) && empty($max_price)) {
+            $response = [
+                'status' => false,
+                'current_page' =>1,
+                'total_page' =>1,
+                'message' => 'Maximum Price Field Required',
+                'data' => null,
+            ];
+            return response()->json($response, 200);
+        }
+        if (!empty($max_price) && empty($min_price)) {
+            $response = [
+                'status' => false,
+                'current_page' =>1,
+                'total_page' =>1,
+                'message' => 'Minimum Price Field Required',
+                'data' => null,
+            ];
+            return response()->json($response, 200);
+        }
+
+        $product_count = DB::table('products')
+            ->select('products.*')
+            ->join('product_colors','products.id', '=', 'product_colors.product_id')
+            ->whereNull('products.deleted_at')
+            ->where('products.status',1)
+            ->where('products.second_category',$second_category)
+            
+            ->where(function($q) use ($sellers) {
+                if (isset($sellers) && !empty($sellers) && count($sellers) > 0 ) {
+                    $seller_count = 1;
+                    foreach ($sellers as $key => $seller) {
+                        if ($seller_count == 1) {
+                            $q->where('products.seller_id',$seller);
+                        }else{
+                            $q->orWhere('products.seller_id',$seller);
+                        }                       
+                       $seller_count++;
+                    }            
+                 }
+            })
+            ->where(function($q1) use ($brands) {
+                if (isset($brands) && !empty($brands) && count($brands) > 0 ) {
+                    $brand_count = 1;
+                    foreach ($brands as $key => $brand) {
+                        if ($brand_count == 1) {
+                            $q1->where('products.brand_id',$brand);
+                        }else{
+                            $q1->orWhere('products.brand_id',$brand);
+                        }                       
+                       $brand_count++;
+                    }            
+                 }
+            });
+            if (isset($colors) && !empty($colors) && count($colors) > 0 ) {
+                $product_count->where(function($q2) use ($colors) {
+                    
+                        $colors_count = 1;
+                        foreach ($colors as $key => $color) {
+                            if ($colors_count == 1) {
+                                $q2->where('product_colors.color_id',$color);
+                            }else{
+                                $q2->orWhere('product_colors.color_id',$color);
+                            }                       
+                        $colors_count++;
+                        }            
+                    
+                });
+            }
+
+         if (isset($min_price) && isset($max_price) && !empty($max_price) && !empty($min_price) ) {
+            $product_count->whereBetween('products.price',[$min_price,$max_price]);                     
+         }
+
+        $product_count=$product_count            
+            ->distinct('products.id');
+        $product_against_seller = $product_count;
+         
+        if (isset($sort) && !empty($sort)) {
+            if ($sort == 'newest') {
+                $product_against_seller->orderBy('products.id', 'asc');
+            }
+            elseif ($sort == 'low') {
+                $product_against_seller->orderBy('products.price', 'asc');
+            }elseif ($sort == 'high') {
+                $product_against_seller->orderBy('products.price', 'desc');
+            }elseif ($sort == 'title_asc') {
+                $product_against_seller->orderBy('products.name', 'asc');
+            }elseif ($sort == 'title_dsc') {
+                $product_against_seller->orderBy('products.name', 'desc');
+            }
+        }
+
+        $product_total = $product_count->count();
+        
+        $limit = ($page*12)-12;
+        $total_page = ceil($product_total /12);
+        // DB::enableQueryLog();
+        $products = $product_against_seller
+            ->latest('products.id')
+            ->skip($limit)
+            ->take(12)
+            ->get();
+            // dd(str_replace_array('?', \DB::getQueryLog()[0]['bindings'], 
+            // \DB::getQueryLog()[0]['query']));
+        $response = [
+            'status' => true,
+            'current_page' =>$page,
+            'total_page' => $total_page,
+            'message' => 'Product list After Filter',
+            'data' =>$products,
+        ];
+        return response()->json($response, 200);
+
     }
 }
